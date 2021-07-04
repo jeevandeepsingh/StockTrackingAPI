@@ -3,11 +3,9 @@ const app = express();
 
 const ExpressError = require('./utils/ExpressError');
 
-// const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/portfoliotrackerApp';
-// 'mongodb+srv://our-first-user:AFsMHkIuWN55jLbH@cluster0.vh5se.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://our-first-user:AFsMHkIuWN55jLbH@cluster0.vh5se.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect('mongodb://localhost:27017/portfoliotrackerApp', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
