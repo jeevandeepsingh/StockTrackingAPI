@@ -71,7 +71,7 @@ module.exports.updateTrades = async (req, res, trades, ticker, user) => {
         user.securities.set(ticker, [prevaveragebuyprice, prevquantity]);
 
         await user.save();
-
+        return 200;//Status Code
     }catch(e) {
         return res.status(400).send({'error': 'Invalid request error'});
     }
