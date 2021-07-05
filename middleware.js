@@ -35,7 +35,7 @@ module.exports.isValidData = async (req, res, next) => {
     next();
 }
 
-//Middleware for details Validation
+//Middleware for TOKEN ID Validation
 module.exports.isValidTid = async (req, res, next) => {
 
     const {token} = req.params;
