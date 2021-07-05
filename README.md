@@ -92,3 +92,13 @@ cumulative returns is SUM((CURRENT_PRICE[ticker] - AVERAGE_BUY_PRICE[ticker]) * 
     ● Http Request type -> GET
     
    ![](Screeshot/USERRETURNS.png)
+
+# Extra Features
+
+# RESET API
+This API call will delete all the data of user,trades,banks etc.After this you can create new user,trades,banks. 
+    
+    ● URL-> https://lovely-mammoth-cave-94087.herokuapp.com/delete
+    ● Http Request type -> DELETE
+    
+   ![](Screeshot/DELETEAPIDATA.png)
