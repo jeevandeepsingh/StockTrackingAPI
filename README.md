@@ -102,3 +102,17 @@ This API call will delete all the data of user,trades,banks etc.After this you c
     ● Http Request type -> DELETE
     
    ![](Screeshot/DELETEAPIDATA.png)
+
+# Create User
+
+This API call will create a new user in database & return tokenID.
+    
+    ● URL-> https://lovely-mammoth-cave-94087.herokuapp.com/register
+    ● Body -> Body will contain[username, email, phoneno] you can take reference of Image.
+    ● Http Request type -> POST
+    
+   ![](Screeshot/REGISTER.png)
+   
+    ● Token ID -> This ID is very important it is unique for every user only with this Token ID you can perform API calls.
+    
+   ![](Screeshot/TOKENID.png)
