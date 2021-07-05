@@ -2,6 +2,10 @@ const User = require('../modals/user');
 const Bank = require('../modals/bank');
 const Trades = require('../modals/trade');
 
+/*
+register function is creating a new user in USER database
+& generating the unique TOKEN ID for unique identification of user.
+*/
 module.exports.register = async (req, res) => {
     try {
         const {username, email, phoneno} = req.body;
@@ -16,6 +20,11 @@ module.exports.register = async (req, res) => {
     }
 }
 
+/*
+portfolio function will return the portfolio of a user.
+So for portfolio we take help of securities MAP which store
+the details of the securities & their updated AverageBuyPrice. 
+*/
 module.exports.portfolio = async (req, res) => {
     try {
         const {token} = req.params;
@@ -40,6 +49,9 @@ module.exports.portfolio = async (req, res) => {
     }
 }
 
+/*
+returns function will return the cumulativeShareReturn for a particular USER
+*/
 module.exports.returns = async (req, res) => {
     try {
 
@@ -49,6 +61,7 @@ module.exports.returns = async (req, res) => {
         const {username, phoneno, email, securities} = user;
         
         let cumulativeShareReturn = 0;
+        //key = Ticker Symbol & value -> Share quantity
         for (let [key, value] of securities) {
             
             if(key === 'Ticker')    continue;//To eleminate default value
@@ -63,7 +76,7 @@ module.exports.returns = async (req, res) => {
     }
 }
 
-
+//resetData will Delete all the data of users like trades,companies & users also from database.
 module.exports.resetData = async (req, res) => {
     try {
 
