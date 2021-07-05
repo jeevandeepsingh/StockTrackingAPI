@@ -1,3 +1,4 @@
+//It will create ExpressError and throw it to middleware. 
 class ExpressError extends Error {
     constructor(message, status)
     {
