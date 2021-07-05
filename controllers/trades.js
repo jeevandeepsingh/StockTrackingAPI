@@ -154,24 +154,29 @@ module.exports.update = async (req, res) => {
         if(ticker === oldticker)
         {
             await tradesUpdater.updateTrades(req, res, trades, ticker, user);//Bcz we have to update trade for same company.
+            return res.status(200).send({'success': 'Successfully added Trade'});        
         }
         else
         {
-            await tradesUpdater.updateTrades(req, res, trades, oldticker, user);//Bcz we have to update trade for Diff company we don't consider cur trade.                
+            const response = await tradesUpdater.updateTrades(req, res, trades, oldticker, user);//Bcz we have to update trade for Diff company we don't consider cur trade.                
             
-            const tradeB = await Trade.find({token: token, ticker: ticker});
-            await tradesUpdater.updateTrades(req, res, tradeB, ticker, user);//Bcz we have to update trade for Diff company we don't consider cur trade.
+            if(response.statusCode != 400)
+            {
+                const tradeB = await Trade.find({token: token, ticker: ticker});
+                await tradesUpdater.updateTrades(req, res, tradeB, ticker, user);//Bcz we have to update trade for Diff company we don't consider cur trade.
+            
+                return res.status(200).send({'success': 'Successfully added Trade'});        
+            }
         } 
 
-        return res.status(200).send({'success': 'Successfully added Trade'});    
     }catch(e) {
         return res.status(400).send({'error': 'Invalid request error'});
     }
 }   
 
+
 module.exports.delete = async (req, res) => {
     try {
-
         const {token} = req.params;
         const {tid} = req.body;
         
@@ -183,16 +188,27 @@ module.exports.delete = async (req, res) => {
         let tradeIndex = user.trades.findIndex(trade => trade.tid === tid);
         let ID = user.trades[tradeIndex]._id;
         let ticker = user.trades[tradeIndex].ticker;
-        await Trade.findByIdAndDelete(ID);
-
-        user.trades.splice(tradeIndex,1);
-        await user.save();
 
         const trades = await Trade.find({token: token, ticker: ticker});
-        await tradesUpdater.updateTrades(req, res, trades, ticker, user);//Bcz we have to update trade for same company.
+
+        trades[tradeIndex].shareprice = 0;
+        trades[tradeIndex].quantity = 0;
+        trades[tradeIndex].averagebuyprice = 0;
+        trades[tradeIndex].prevquantity = 0;    
+        trades[tradeIndex].prevaveragebuyprice = 0;
+
         
-        return res.status(200).send({'success': 'Successfully Delete Trade'});    
+        const response = await tradesUpdater.updateTrades(req, res, trades, ticker, user);//Bcz we have to update trade for same company.
+        
+        if(response.statusCode != 400)
+        {
+            await Trade.findByIdAndDelete(ID);
+            user.trades.splice(tradeIndex,1);
+            await user.save(); 
+
+            return res.status(200).send({'success': 'Successfully Delete Trade'});    
+        }
     }catch(e) {
-        return res.status(400).send({'error': e.message});
+        return res.status(400).send({'errorsads': e.message});
     }
 }   
