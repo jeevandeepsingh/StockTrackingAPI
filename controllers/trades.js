@@ -85,7 +85,7 @@ module.exports.add = async (req, res) => {
 
         res.status(200).send({'success': 'Successfully added Trade'});    
     }catch(e) {
-        res.status(400).send({'error': e.message});
+        res.status(400).send({'error': 'Invalid request error'});
     }
 }
 
@@ -128,7 +128,7 @@ module.exports.details = async (req, res) => {
         res.send(JSON.stringify([...tradedetails]));  
     
     }catch(e) {
-    res.status(400).send({'error': e.message});
+    res.status(400).send({'error': 'Invalid request error'});
     }
 }
 
@@ -166,7 +166,7 @@ module.exports.update = async (req, res) => {
         if(ticker === oldticker)
         {
             await tradesUpdater.updateTrades(req, res, trades, ticker, user);//Bcz we have to update trade for same company.
-            return res.status(200).send({'success': 'Successfully added Trade'});        
+            return res.status(200).send({'success': 'Successfully updated a Trade'});        
         }
         else//If we are updating a trade values of different security(bank).
         {
@@ -180,7 +180,7 @@ module.exports.update = async (req, res) => {
                 //we check updating the this trade will not effect the other trades of new security(bank) & then Update the trade in for new security(bank).
                 await tradesUpdater.updateTrades(req, res, tradeB, ticker, user);
             
-                return res.status(200).send({'success': 'Successfully added Trade'});        
+                return res.status(200).send({'success': 'Successfully updated a Trade'});        
             }
         } 
 
