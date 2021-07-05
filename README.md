@@ -16,18 +16,20 @@ Currently we have 4 Securities
 
 # Portfolio Tracking API Requests
 
-# Adding trades
+# Adding trades 
 
 PART 1 - ​ BUY -> Using this we can add trade of type = BUY
 
     ● URL-> https://lovely-mammoth-cave-94087.herokuapp.com/trade/add/token
     ● token -> Here we use token to add this trade for particular USER
+    ● Body -> Body will contain[ticker,shareprice,type,quantity] you can take reference of Image.
+    ● Http Request type -> POST
     
-   ![](screenshot/image1.png)
+   ![](Screeshot/BUYTRADE.png)
    
-    ● Activate virtual environment (‘venv’)
-      1. Type the following command to activate it.
-      2. $source venv/bin/activate
-   ![](screenshot/image2png)
-      
-      3. (venv) right before the root user indicate that the virtual environment is activated
+PART 2 - ​ SELL -> Using this we can add trade of type = SELL
+
+    ● Here Everyting is same as above just type in BODY will change
+    
+   ![](Screeshot/SELLTRADE.png)
+   
