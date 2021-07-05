@@ -51,3 +51,14 @@ PART 2 - ​ SELL -> Using this we can update trade of type = SELL
     ● Here Everyting is same as above just type in BODY will change
     
    ![](Screeshot/UPDATESELL.png)
+
+
+# Removing a trade
+A trade of a security can be removed from the portfolio reverting the changes it had when it was added.
+
+    ● URL-> https://lovely-mammoth-cave-94087.herokuapp.com/trade/delete/token
+    ● token -> Here we use token to add this trade for particular USER
+    ● Body -> Body will contain[tid] you can take reference of Image.
+    ● Http Request type -> DELETE
+    
+   ![](Screeshot/DELETETRADE.png)
