@@ -1,17 +1,23 @@
 const Trade = require('../modals/trade');
 const User = require('../modals/user');
 
+/*
+updateTrades function iterate trades and apply calculations of BUY/SELL/Update trades
+If any error occur like eg. user is trying to SELL the shares without BUY it etc.
+so it return an error which means the new updation/addition of trade is not possible.
+*/
+
 module.exports.updateTrades = async (req, res, trades, ticker, user) => {
     try {
         let idx = 0;
         let prevaveragebuyprice = 0;
         let prevquantity = 0;
 
-        //Have more Trades and we have to check them
+        //Iterating the Trades
         for( ; idx < trades.length ; idx++)
         {
 
-            if(trades[idx].ticker != ticker)    
+            if(trades[idx].ticker != ticker)// If we got trades of differnet company ten we don't have to handle it.    
             {
                 if(idx === 0)
                 {
@@ -21,7 +27,7 @@ module.exports.updateTrades = async (req, res, trades, ticker, user) => {
                 continue; 
             }
 
-            if(trades[idx].type === 'BUY')
+            if(trades[idx].type === 'BUY')//For BUY trade operation
             {
 
                 let curaveragebuyprice = trades[idx].shareprice, curquantity = trades[idx].quantity;
@@ -36,7 +42,7 @@ module.exports.updateTrades = async (req, res, trades, ticker, user) => {
                 prevaveragebuyprice = averagebuyprice;
                 prevquantity = noofshares;
             }
-            else
+            else//For SELL trade operation
             {
                 if(prevquantity > 0)
                 {
@@ -62,13 +68,13 @@ module.exports.updateTrades = async (req, res, trades, ticker, user) => {
             }
         }
 
-        for(idx = 0 ; idx < trades.length ; idx++)
+        for(idx = 0 ; idx < trades.length ; idx++)//Updating the trades in USER database
         {
             await trades[idx].save();
         }
 
 
-        user.securities.set(ticker, [prevaveragebuyprice, prevquantity]);
+        user.securities.set(ticker, [prevaveragebuyprice, prevquantity]);//Updating the securities in USER database
 
         await user.save();
         return 200;//Status Code
