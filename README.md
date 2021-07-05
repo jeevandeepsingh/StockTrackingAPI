@@ -62,3 +62,14 @@ A trade of a security can be removed from the portfolio reverting the changes it
     ● Http Request type -> DELETE
     
    ![](Screeshot/DELETETRADE.png)
+
+# Fetching trades
+It will give all the securities and trades corresponding to it
+
+    ● URL-> https://lovely-mammoth-cave-94087.herokuapp.com/trade/details/token
+    ● token -> Here we use token to add this trade for particular USER
+    ● Http Request type -> GET
+    ● Here response is in HTML format you can convert into JSON[Take ref. second picture]
+    
+   ![](Screeshot/TRADEDETAILSHTML.png)
+   ![](Screeshot/TRADEDETAILSJSON.png)
