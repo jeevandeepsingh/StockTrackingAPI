@@ -1,7 +1,7 @@
 const Users = require('./modals/user');
 const Banks = require('./modals/bank');
 
-//Middleware for Authentication details
+//Middleware for Authentication details  
 module.exports.isValidUser = async (req, res, next) => {
 
     const {token} = req.params;
@@ -14,7 +14,7 @@ module.exports.isValidUser = async (req, res, next) => {
     next();
 } 
 
-//Middleware for details Validation
+//Middleware for details Validation eg: Price & Number of Shares should be positive etc.
 module.exports.isValidData = async (req, res, next) => {
 
     const {ticker, shareprice, quantity} = req.body;
