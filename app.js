@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 
 const ExpressError = require('./utils/ExpressError');
-
 const mongoose = require('mongoose');
 
+// Mongo configuration
 mongoose.connect('mongodb://localhost:27017/portfoliotrackerApp', {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -26,6 +26,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());// json parser
 app.use(express.urlencoded({extended: true}));//x-www-form-urlencoded parser
 
+//API Routes
 app.use('/trade',tradesRoutes);
 app.use('/bank',bankRoutes);
 app.use('/',userRoutes);
