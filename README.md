@@ -25,7 +25,7 @@ and can do basic return calculations
 
 # Project Details
 - Deployed on -> Heroku.
-- Backend -> NodeJS.
+- Backend -> NodeJS, Express.
 - Database -> MongoDB(MongoDB Atlas), Mongoose.
 - Project URL -> https://lovely-mammoth-cave-94087.herokuapp.com/ {api request}
 
