@@ -82,3 +82,13 @@ It is an aggregate view of all securities in the portfolio with its final quanti
     ● Http Request type -> GET
     
    ![](Screeshot/USERPORTFOLIO.png)
+   
+# Fetching returns
+This API call respond with cumulative returns at any point of time of a particular portfolio. Formula for calculating
+cumulative returns is SUM((CURRENT_PRICE[ticker] - AVERAGE_BUY_PRICE[ticker]) * CURRENT_QUANTITY[ticker])
+    
+    ● URL-> https://lovely-mammoth-cave-94087.herokuapp.com/returns/token
+    ● token -> Here we use token to add this trade for particular USER
+    ● Http Request type -> GET
+    
+   ![](Screeshot/USERRETURNS.png)
