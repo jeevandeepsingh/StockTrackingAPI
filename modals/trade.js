@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
+//Schema of TRADE
 const TradeSchema = new Schema ({
     token: {
         type: String,
