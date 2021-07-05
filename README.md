@@ -2,9 +2,43 @@
 A portfolio tracking API needs to be implemented which allows adding/deleting/updating trades
 and can do basic return calculations
 
+- Securities: 
+
+        A simple definition of a security is any proof of ownership or debt that has been
+        assigned a value and may be sold. Example - Tata Consultancy Services Limited (TCS) one of
+        the companies which became public in 2004 and investors can buy and sell shares of TCS.
+        Currently price of 1 share (can call it quantity also) of TCS is Rs. 1,843.45. All the information is
+        publicly available. Other listed companies - WIPRO (Wipro Limited), GODREJIND (Godrej
+        Industries Ltd).
+
+- Ticker Symbol: 
+
+        Every listed security has a unique ticker symbol, facilitating the vast array of
+        trade orders that flow through the financial markets every day. Example - ticker for Tata
+        Consultancy Services Limited is TCS, for Wipro Limited it is WIPRO.
+
+- Portfolio: 
+
+        A portfolio is a grouping of financial assets such as stocks, bonds, commodities,
+        currencies and cash equivalents, as well as their fund counterparts, including mutual,
+        exchange-traded and closed funds
+
+# Project Details
+- Deployed on -> Heroku.
+- Backend -> NodeJS.
+- Database -> MongoDB(MongoDB Atlas), Mongoose.
+- Project URL -> https://lovely-mammoth-cave-94087.herokuapp.com/ {api request}
+
+# Build and Run Locally
+- Install MongoDB, Node on your local machine
+- Build API projects by running "npm install"
+- Start API by running "node server" or "nodemon server" eg: node app.js
+- StockTrackingAPI : http://localhost:3000
+
 # User Details
 - Name -> Demo
-- token -> 6274910 [token -> It is for Security purpose like authentication & authorization]
+- token -> 10161144 [token -> It is for Security purpose like authentication & authorization]
+- for testing use this tokenID please.
 
 # Bank Details
 We can only BUY/SELL Shares of those company which are register in out Securities.
