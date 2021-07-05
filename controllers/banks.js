@@ -1,6 +1,10 @@
 const Bank = require('../modals/bank');
 const mongoose = require('mongoose');
 
+/*
+This function will add bank in our database &
+also set the current sharepriceof that bank. 
+*/
 module.exports.add = async (req, res) => {
     try {
         const {bankname, ticker, shareprice} = req.body;
