@@ -73,3 +73,12 @@ It will give all the securities and trades corresponding to it
     
    ![](Screeshot/TRADEDETAILSHTML.png)
    ![](Screeshot/TRADEDETAILSJSON.png)
+
+# Fetching portfolio
+It is an aggregate view of all securities in the portfolio with its final quantity and average buy price
+
+    ● URL-> https://lovely-mammoth-cave-94087.herokuapp.com/portfolio/token
+    ● token -> Here we use token to add this trade for particular USER
+    ● Http Request type -> GET
+    
+   ![](Screeshot/USERPORTFOLIO.png)
