@@ -41,7 +41,7 @@ and can do basic return calculations
 - for testing use this tokenID please.
 
 # Bank Details
-We can only BUY/SELL Shares of those company which are register in out Securities.
+We can only BUY/SELL Shares of those company which are register in our Securities.
 Currently we have 4 Securities
 - TCS -> Tata Consultancy Services Limited 
 - WIPRO -> Wipro Limited
